@@ -1,0 +1,25 @@
+
+[Network]
+Address = ":19132"
+
+[Players]
+Folder = "players"
+MaxCount = 100
+MaximumChunkRadius = 8
+SaveData = true # not sure if we want this on or not for production
+
+[Resources]
+AutoBuildPack = true
+Folder = "resources"
+Required = false
+
+[Server]
+AuthEnabled = true
+JoinMessage = ""
+Name = "Swim.gg"
+QuitMessage = ""
+ShutdownMessage = "Server Restarting"
+
+[World]
+Folder = "world"
+SaveData = true # in production this should be set to false
