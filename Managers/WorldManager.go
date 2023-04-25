@@ -84,6 +84,7 @@ func DefaultWorldSettings(w *world.World) {
 	w.StopThundering()
 	w.SetDefaultGameMode(world.GameModeSurvival)
 	w.SetDifficulty(world.DifficultyNormal)
+	w.Handle(&WorldHandler{})
 }
 
 // LoadWorld loads a world if it hasn't been loaded yet and sets default values
@@ -109,8 +110,6 @@ func (m *WorldManager) LoadWorld(worldPath, worldName string) error {
 	}.New()
 	// set up default values
 	DefaultWorldSettings(w)
-	// w.Handle(&Handler{})
-	w.Handle(nil) // &Handler{} is not defined so doing this for now
 	// change world name
 	m.worldsMu.Lock() // we have to lock it to do this
 	m.worlds[worldName] = w

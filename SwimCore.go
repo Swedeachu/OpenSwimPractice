@@ -3,8 +3,6 @@ package main
 import (
 	"SwimPractice/Commands"
 	"SwimPractice/Managers"
-	"SwimPractice/Managers/PlayerManager"
-	"SwimPractice/Managers/Players"
 	"fmt"
 	"github.com/df-mc/dragonfly/server"
 	"github.com/df-mc/dragonfly/server/player/chat"
@@ -37,11 +35,11 @@ func startLoggerAndServer() {
 	// load the worlds before listening
 	Managers.LoadWorlds()
 	// set up the session manager
-	Managers.Swim.SessionDataManager = PlayerManager.NewPlayerSessionDataManager()
-	PlayerManager.SessionManagerRoutineStart(Managers.Swim.SessionDataManager)
+	Managers.Swim.SessionDataManager = Managers.NewPlayerSessionDataManager()
+	Managers.SessionManagerRoutineStart(Managers.Swim.SessionDataManager)
 	// start listening (enable the server)
 	Managers.Swim.ServerInstance.Listen()
-	Players.JoinManager(Managers.Swim.ServerInstance) // call the function which constantly listens for player connections
+	Managers.JoinManager(Managers.Swim.ServerInstance) // call the function which constantly listens for player connections
 }
 
 // readConfig reads the configuration from the config.toml file, or creates the file if it does not yet exist.

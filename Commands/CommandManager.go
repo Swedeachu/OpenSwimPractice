@@ -12,4 +12,6 @@ func RegisterAllCommands() {
 	cmd.Register(cmd.New("announcement", "Announce a message globally", []string{"announce", "shout"}, AnnouncementCommand{}))
 	cmd.Register(cmd.New("hub", "Teleports you back to the hub", []string{"spawn"}, HubCommand{}))
 	cmd.Register(cmd.New("world", "Teleports you to (0, 0) in a world, does nothing if the world does not exist", []string{}, WorldChangeCommand{}))
+	cmd.Register(cmd.New("damage", "Hurts yourself", []string{"d"}, DamageCommand{}))
+	cmd.Register(cmd.New("knockback", "Changes the servers Force and Height of the knock back", []string{"kb"}, KnockBackCommand{}))
 }

@@ -1,15 +1,14 @@
 package Managers
 
 import (
-	"SwimPractice/Managers/PlayerManager"
 	"fmt"
 	"github.com/df-mc/dragonfly/server"
 	"github.com/df-mc/dragonfly/server/block/cube"
 	"github.com/df-mc/dragonfly/server/player"
-	"github.com/df-mc/dragonfly/server/world"
 	"github.com/go-gl/mathgl/mgl64"
 	"github.com/sirupsen/logrus"
 	"log"
+	"math/rand"
 	"os"
 	"path/filepath"
 )
@@ -17,7 +16,7 @@ import (
 // SwimPractice our special single instance "base classes" go here
 type SwimPractice struct {
 	WorldManager       *WorldManager
-	SessionDataManager *PlayerManager.PlayerSessionDataManager
+	SessionDataManager *PlayerSessionDataManager
 	ServerInstance     *server.Server
 }
 
@@ -32,10 +31,24 @@ func GlobalMessage(message string) {
 
 // Hub teleports a player to hub and defaults their inventory and game mode etc
 func Hub(plr *player.Player) {
+	// first reset behaviors back to default
+	handler := Swim.SessionDataManager.Players[plr].Handler
+	handler.ClearPlayerBehaviors()
+	SetDefaultBehaviors(handler)
+	// teleport back to hub
 	spawnVec3 := mgl64.Vec3{-31, 100, 0}
 	TeleportToWorld(plr, "flat", spawnVec3)
-	plr.SetGameMode(world.GameModeSurvival) // set them to survival
-	plr.Inventory().Clear()                 // clear inventory
+	// give hub kit
+	HubKit(plr)
+	// set levels back to 0
+	plr.SetExperienceProgress(0)
+	plr.SetExperienceLevel(0)
+	// get rid of any cool downs
+	data := Swim.SessionDataManager.Players[plr]
+	data.PlayerDataLock()
+	defer data.PlayerDataUnlock()
+	data.PearlCoolDown = 0
+	// message
 	plr.Messagef("§aSent you to the Hub!")
 }
 
@@ -46,6 +59,23 @@ func TeleportToWorld(plr *player.Player, worldName string, pos mgl64.Vec3) {
 		newWorld.AddEntity(plr)
 		plr.Teleport(cube.PosFromVec3(pos).Vec3Centre())
 	}
+}
+
+// VectorRandOffset3D offsets a 3D vectors x and z values by a random set range
+func VectorRandOffset3D(x int, y int, z int, offsetX int, offsetZ int) mgl64.Vec3 {
+	offSetX := rand.Intn(offsetX+1) - offsetX/2
+	offSetZ := rand.Intn(offsetZ+1) - offsetZ/2
+	return mgl64.Vec3{float64(x + offSetX), float64(y), float64(z + offSetZ)}
+}
+
+// GetOnlineCount get the amount of players online
+func GetOnlineCount() int {
+	return len(Swim.ServerInstance.Players())
+}
+
+// GetMaxPlayerCount get the max amount of players allowed to join the server
+func GetMaxPlayerCount() int {
+	return Swim.ServerInstance.MaxPlayerCount()
 }
 
 // LoadWorlds load all the worlds on the disk using WorldManager
