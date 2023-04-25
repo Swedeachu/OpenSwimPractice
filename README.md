@@ -6,15 +6,13 @@ I did of course leave out all the assets such as world files and entity models, 
 I don't care about code in that way though, I believe everything should be open sourced to an extent in certain scenarios. 
 <br>
 So what not a better time to open source a project while I learrn Go and Dragonfly!
+# Info
+Flonja is working on an open sourced multi version dragonfly library for us [here](https://github.com/Flonja/multiversion)
 <br>
-This will probably be closed sourced around the time I start implementing secrets such as an anticheat and database solution.
+DidntPot, Flonja, Zodia, and all the bedrock gophers have been helping me quite a lot. Thank you to all of them for sharing knowledge and showing me the ropes.
+<br>
+I will only close souce the server if people start blatantly skidding or try to do malicious things with this code (sell it as their own core, etc)
 # Current Issues
 I don't know Go conventions that well, so there is a lot of cursed project structuring and naming.
 <br>
-Insane boilerplate just for a player event handler, all though it did make things more syntactically sweet.
-<br>
-No multi protocol yet, Flonja will probably work on that again when he gets the chance.
-<br>
-Very incomplete! No hosting or anything fun set up yet, just pure code I've only tested on my own machine.
-<br>
-I am in the major early technical framework design portion of development still.
+Far from complete game play wise, but the systems are coming together nicely
