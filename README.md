@@ -17,4 +17,6 @@ I will only close source the server if people start blatantly skidding or try to
 # Current Issues
 I don't know Go conventions that well, so there is a lot of cursed project structuring and naming.
 <br>
+Managers package is a complete mess of data structures and forms and stuff that doesn't belong together.
+<br>
 Far from complete game play wise, but the systems are coming together nicely.
