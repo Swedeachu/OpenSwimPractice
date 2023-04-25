@@ -1,9 +1,9 @@
 # OpenSwimPractice
 Reviving Swim.gg with Dragonfly
 # Open Sourced (for now)
-I left out all the assets such as world files and entity models, as my artists would not appreciate their work being leaked.
+Assets such as world files and models will not be in this repo, as my artists would not appreciate their work being leaked.
 <br>
-I don't care about code in that way though, I believe everything should be open sourced to an extent in certain scenarios. 
+I don't care about code in that way though, I believe everything should be open sourced to an extent. 
 <br>
 So what not a better time to open source a project while I learrn Go and Dragonfly!
 # Info
@@ -13,7 +13,7 @@ DidntPot, Flonja, Zodia, and all the bedrock gophers have been helping me quite 
 <br>
 Thank you to all of them for sharing knowledge and showing me the ropes.
 <br>
-I will only close souce the server if people start blatantly skidding or try to do malicious things with this code (sell it as their own core, etc)
+I will only close source the server if people start blatantly skidding or try to do malicious things with this code (sell it as their own core, etc)
 # Current Issues
 I don't know Go conventions that well, so there is a lot of cursed project structuring and naming.
 <br>
