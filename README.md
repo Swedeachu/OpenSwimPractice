@@ -1,7 +1,7 @@
 # OpenSwimPractice
 Reviving Swim.gg with Dragonfly
 # Open Sourced (for now)
-I did of course leave out all the assets such as world files and entity models, as my artists would not appreciate their work being leaked.
+I left out all the assets such as world files and entity models, as my artists would not appreciate their work being leaked.
 <br>
 I don't care about code in that way though, I believe everything should be open sourced to an extent in certain scenarios. 
 <br>
