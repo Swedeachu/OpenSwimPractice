@@ -19,4 +19,6 @@ I don't know Go conventions that well, so there is a lot of cursed project struc
 <br>
 Managers package is a complete mess of data structures and forms and stuff that doesn't belong together.
 <br>
+There could be a pretty horrific bug right now caused by faulty mutex locking.
+<br>
 Far from complete game play wise, but the systems are coming together nicely.
